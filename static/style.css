@@ -1,3 +1,11 @@
+:root {
+  --main-color: #6b4f8a;   /* رنگ اصلی – بنفش ملایم */
+  --accent-color: #c497b2; /* صورتی ملایم خاکی */
+  --light-bg: #f9f7fa;
+  --dark-text: #3a2f3a;
+  --light-text: #ffffff;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,13 +17,19 @@ html, body {
   overflow-x: hidden; 
 }
 
+html{
+  scroll-behavior: smooth;
+
+}
+
 body {
   font-family: 'Vazirmatn', Tahoma, sans-serif;
+  font-weight: 300;
   direction: rtl;
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
-  color: #333;
+  background-color: var(--light-bg);
+  color: var(--dark-text);
   font-size: 18px;
   line-height: 1.6;
 }
@@ -26,10 +40,6 @@ header {
   padding: 10px 0;
   text-align: center;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-}
-
-#sample-of-work {
-  display: none;
 }
 
 .dark-toggle {
@@ -72,7 +82,7 @@ body.dark a:hover {
 #mode-toggle {
   position: fixed;
   top: 10px;   
-  left: 1px;
+  left: 12px;
   background: transparent;
   color: white;
   border: none;
@@ -159,34 +169,51 @@ nav a:hover {
   color: #0c0c0c;
 }
 
-section {
-  padding: 30px 25px;
-  max-width: 800px;
-  margin: 30px auto;
-  background-color: #dfd489; 
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'><path d='M0 400 C200 300, 600 100, 800 0' stroke='%23f5f5f5' stroke-width='2' fill='none'/><path d='M0 400 C200 300, 400 100, 400 0' stroke='%23f5f5f5' stroke-width='2' fill='none'/><path d='M0 400 C100 300, 200 100, 0 0' stroke='%23f5f5f5' stroke-width='2' fill='none'/></svg>");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  border-top-left-radius: 80px;
-  border-top-right-radius: 80px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  color: #003147;
-  font-size: 17px;
-  line-height: 1.8;
+section { /*brye boxa*/
+  background: linear-gradient(135deg, #bcc9d1, #9aa7b0);
+  color: #2e3e4e;
+  font-size: 18px;
+  line-height: 1.75;
+  padding: 40px 30px;
+  margin: 50px auto;
+  max-width: 900px;
+  border-radius: 50px 50px 20px 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12), 0 20px 60px rgba(90, 100, 120, 0.4);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.4s ease;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease-in-out;
 }
 
+section.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -15%;
+  width: 220%;
+  height: 180%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.5), transparent 60%);
+  transform: rotate(45deg);
+  pointer-events: none;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+}
+
+section:hover {
+  box-shadow: 0 20px 50px rgba(75, 85, 105, 0.8), 0 30px 70px rgba(90, 100, 120, 0.7);
+  cursor: default;
+}
 /* رنگ لینک‌ها به صورت مشخص */
 section a {
   color: #e9e3dd; /* نارنجی استاندارد */
   text-decoration: none;
-}
-
-section a:hover {
-  text-decoration: underline;
-  color: #edd8cb;
 }
 
 section a:visited {
@@ -216,7 +243,7 @@ section h2 {
 
 @keyframes moveRight {
   from {
-    transform: translateX();
+    transform: translateX(0);
   }
   to {
     transform: translateX(150px);
@@ -273,48 +300,137 @@ a:hover {
 }
 
 form {
-  background: #ffffffdd; /* سفید نیمه‌شفاف */
-  padding: 2px 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  max-width: 400px;
-  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.2); /* زمینه شفاف */
+  padding: 20px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  max-width: 450px;
+  margin: 30px auto;
   font-family: 'Vazirmatn', Tahoma, sans-serif;
+  color: #fff;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255,255,255,0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+form:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
 input, textarea {
   width: 100%;
-  padding: 12px 15px;
-  margin: 12px 0;
-  border-radius: 8px;
-  border: 1.8px solid #aaa;
+  padding: 14px 18px;
+  margin: 14px 0;
+  border-radius: 12px;
+  border: none;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  transition: box-shadow 0.3s ease;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
 }
 
 input:focus, textarea:focus {
-  border-color: #5A5CA7;
   outline: none;
-  box-shadow: 0 0 8px #5A5CA7aa;
+  box-shadow: 0 0 12px #a374d1;
+  background: rgba(255, 255, 255, 0.3);
+  color: #2e1a57;
 }
 
+/* دکمه‌ها با افکت سایه متحرک و تغییر رنگ نرم */
 button {
-  background-color: #9494c0;
+  background-color: #6b4b8a; /* رنگ بنفش خاص */
   color: white;
   font-weight: 600;
-  padding: 12px 10%;
+  padding: 12px 20px;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 1.1rem;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(107, 75, 138, 0.5);
 }
 
 button:hover {
-  background-color: #443c5f;
+  background-color: #7d5ca9;
+  box-shadow: 0 8px 20px rgba(125, 92, 169, 0.7);
+  transform: translateY(-3px);
 }
 
-/* استایل باکس پیام‌ها */
+/* لینک‌ها با زیرخط متحرک و رنگ تغییر کننده */
+a {
+  color: #6b4b8a;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background-color: #7d5ca9;
+  transition: width 0.3s ease;
+}
+
+a:hover {
+  color: #7d5ca9;
+}
+
+a:hover::after {
+  width: 100%;
+}
+.contact-icons a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: #5A5CA7;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.contact-icons a i {
+  font-size: 24px;
+}
+
+.contact-icons a:hover {
+  color: #7b6bc9;
+}
+
+
+/* پیام‌های موفقیت و خطا */
+.flash {
+  max-width: 480px;
+  margin: 20px auto;
+  padding: 16px 25px;
+  border-radius: 18px;
+  font-weight: 700;
+  font-family: 'Vazirmatn', Tahoma, sans-serif;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.flash.success {
+  background: rgba(230, 151, 90, 0.85);
+  border: 2px solid #d39080;
+}
+
+.flash.error {
+  background: rgba(230, 90, 90, 0.85);
+  border: 2px solid #a13333;
+}
+
 .messages {
   max-width: 600px;
   margin: 30px auto;
@@ -341,28 +457,6 @@ button:hover {
   font-weight: 700;
 }
 
-/* استایل پیام‌های فلاش */
-.flash {
-  max-width: 500px;
-  margin: 10px auto;
-  padding: 12px 20px;
-  border-radius: 10px;
-  font-weight: 600;
-  font-family: 'Vazirmatn', Tahoma, sans-serif;
-  text-align: center;
-}
-
-.flash.success {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1.5px solid #c3e6cb;
-}
-
-.flash.error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1.5px solid #f5c6cb;
-}
 
 footer {
   width: 100%;
@@ -390,7 +484,7 @@ footer {
   #mode-toggle {
     position: absolute;
     top: 10px;
-    right: 15px;
+    left: 19px;
     font-size: 24px;
     color: white;
     z-index: 9999;
