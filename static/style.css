@@ -1,9 +1,9 @@
 :root {
-  --main-color: #6b4f8a;   /* رنگ اصلی – بنفش ملایم */
-  --accent-color: #c497b2; /* صورتی ملایم خاکی */
-  --light-bg: #f9f7fa;
-  --dark-text: #3a2f3a;
-  --light-text: #ffffff;
+  --main-color: #5A6D8C;        /* آبی خاکستری ملایم */
+  --accent-color: #F28C8C;      /* صورتی ملایم و گرم */
+  --light-bg: #F7F9FC;          /* پس‌زمینه روشن */
+  --dark-text: #2E3440;         /* متن تیره */
+  --secondary-color: #A3BFD9;   /* آبی روشن‌تر */
 }
 
 * {
@@ -35,7 +35,7 @@ body {
 }
 
 header {
-  background: linear-gradient(to right,  #d1a1a1 0%, #ebcfa6 100%);
+  background: linear-gradient(to right,  #7c8fad 0%, #F28C8C 100%);
   color: white;
   padding: 10px 0;
   text-align: center;
@@ -45,7 +45,7 @@ header {
 .dark-toggle {
   position: fixed;
   top: 10px;
-  left: 15px;
+  right: 40px;
   padding: 8px 15px;
   font-size: 16px;
   background: #333;
@@ -53,11 +53,11 @@ header {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 99999;
 }
 
 body.dark {
-  background-color: #121212;
+  background-color: #252424;
   color: #f4efef;
 }
 
@@ -68,58 +68,79 @@ body.dark section {
 
 body.dark header,
 body.dark footer {
-  background: linear-gradient(to right, #2a0d29, #1b2251);
+  background: linear-gradient(to right, #2a0d29, #262c55);
 }
 
 body.dark a {
-  color: #90caf9;
+  color: #080b0d;
 }
 
 body.dark a:hover {
-  color: #ffca28;
+  color: #050504;
 }
 
-#mode-toggle {
-  position: fixed;
-  top: 10px;   
-  left: 12px;
-  background: transparent;
-  color: white;
-  border: none;
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
+.lamp-container {
+  position: absolute !important;
+  top: 20px;
+  left: 20px;
+  padding: 20px;
+  z-index: 99999;
   cursor: pointer;
- 
+  transition: transform 0.3s ease;
+}
+
+.lamp-container:hover {
+  transform: scale(1.1);
+}
+
+.lamp-svg {
+  width: 50px;
+  height: auto;
+  overflow: visible;
+  transition: filter 0.5s ease, opacity 0.5s ease;
+}
+
+.lamp-off {
+  filter: grayscale(100%) brightness(60%);
+  opacity: 0.6;
+}
+
+body.dark .lamp-svg #bulb {
+  filter: none;
+}
+
+body.dark .lamp-svg path {
+  fill: #444 !important; 
+  stroke: #222 !important; 
 }
 
 /* حالت شب */
 body.dark {
-  background-color: #121212;
-  color: #e0e0e0;
+  background-color: #000000;
+  color: #c7bfff;
 }
 
 body.dark section {
-  background: #aaa3a3;
-  color: #e0e0e0;
-  box-shadow: 0 4px 10px rgba(144, 142, 142, 0.968);
+  background: linear-gradient(135deg, #5a5959, #35364a);
+  color: #fefbfb !important;
+  box-shadow: 0 4px 10px rgba(102, 100, 100, 0.968);
 }
 
 body.dark header,
 body.dark footer {
-  background: linear-gradient(to right, #988c98, #1b2251);
+  background: linear-gradient(to right, #420202, #0d0146);
 }
 
 body.dark nav a {
-  color: #90caf9;
+  display: inline-block;
+  color: #050505;
+  backdrop-filter: none !important;
 }
 
 body.dark nav a:hover {
-  color: #ffca28;
+  color: #070505;
 }
 
-
-/* ناوبری */
 nav {
   text-align: center;
   margin: 20px 0;
@@ -135,7 +156,7 @@ nav {
 
 .nav-box {
   padding: 12px 20px;
-  background: linear-gradient(to bottom, #b87e91, #94986e);
+  background: linear-gradient(to bottom, #543f45, rgb(228, 172, 186));
   color: white;
   font-weight: bold;
   font-size: 16px;
@@ -151,7 +172,7 @@ nav {
 }
 
 .nav-box:hover {
-  background: linear-gradient(to bottom, #ccab85, #9e6879);
+  background: linear-gradient(to bottom, #ccab85, #cfa8b4);
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.3);
 }
@@ -170,8 +191,8 @@ nav a:hover {
 }
 
 section { /*brye boxa*/
-  background: linear-gradient(135deg, #bcc9d1, #9aa7b0);
-  color: #2e3e4e;
+  background: linear-gradient(135deg, #99a9c6, #cce0e2);
+  color: #0f1010;
   font-size: 18px;
   line-height: 1.75;
   padding: 40px 30px;
@@ -206,18 +227,19 @@ section::before {
   filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
 }
 
+
 section:hover {
   box-shadow: 0 20px 50px rgba(75, 85, 105, 0.8), 0 30px 70px rgba(90, 100, 120, 0.7);
   cursor: default;
 }
-/* رنگ لینک‌ها به صورت مشخص */
+
 section a {
-  color: #e9e3dd; /* نارنجی استاندارد */
+  color: #e9e3dd; 
   text-decoration: none;
 }
 
 section a:visited {
-  color: #c7b6a7; /* جلوگیری از بنفش شدن لینک بازدیدشده */
+  color: #c7b6a7; 
 }
 
 section h2 {
@@ -231,7 +253,7 @@ section h2 {
 .sticker {
   position: absolute;
   top: 1px;
-  left: 50%;
+  left: 60%;
   transform: translateX(-50%);
   width: 150px;
   height: 250px;
@@ -340,9 +362,8 @@ input:focus, textarea:focus {
   color: #2e1a57;
 }
 
-/* دکمه‌ها با افکت سایه متحرک و تغییر رنگ نرم */
 button {
-  background-color: #6b4b8a; /* رنگ بنفش خاص */
+  background-color: #6b4b8a; 
   color: white;
   font-weight: 600;
   padding: 12px 20px;
@@ -359,9 +380,9 @@ button:hover {
   transform: translateY(-3px);
 }
 
-/* لینک‌ها با زیرخط متحرک و رنگ تغییر کننده */
+/*line zire texta*/
 a {
-  color: #6b4b8a;
+  color: #4b0202;
   text-decoration: none;
   position: relative;
   transition: color 0.3s ease;
@@ -405,8 +426,6 @@ a:hover::after {
   color: #7b6bc9;
 }
 
-
-/* پیام‌های موفقیت و خطا */
 .flash {
   max-width: 480px;
   margin: 20px auto;
@@ -460,7 +479,7 @@ a:hover::after {
 
 footer {
   width: 100%;
-  background: linear-gradient(to right, #d4c699, #e5d0e6);
+  background: linear-gradient(to right, #F28C8C , #5d6c86);
   color: white;
   padding: 20px 10px;
   text-align: center;
@@ -469,50 +488,116 @@ footer {
   z-index: 2;
 }
 
+.desktop-only {
+display: block;
+}
+.phone-only {
+  display: none;
+}
 
 @media (max-width: 600px) {
-  body {
-    font-size: 16px;
-    padding: 10px;
-  }
+header {
+  padding: 1px 0;
+  font-size: 16px;
+}
 
-  nav a {
-    display: block;
-    margin: 10px 0;
+section {
+  padding: 20px 15px;
+  max-width: 320px;
+  margin: 30px auto;
+  font-size: 16px;
+  border-radius: 30px 30px 15px 15px;
+  box-shadow: 0 4px 15px rgba(13, 13, 13, 0.979);
+}
+
+section h2{
+  font-size: 18px;
+}
+
+form {
+  padding: 15px 20px;
+  border-radius: 15px;
+  max-width: 320px;
+  min-width: 15px 20px;
+}
+
+input, textarea {
+  padding: 10px 14px;
+  margin: 10px 0;
+  font-size: 0.95rem;
+  border-radius: 10px;
+}
+
+button {
+  padding: 10px 16px;
+  font-size: 0.95rem;
+}
+
+body {
+  font-size: 16px;
+  padding: 10px;
+}
+
+.nav-box {
+  padding: 8px 12px;
+  font-size: 14px;
+  min-width: 80px;
+}
+
+nav a {
+  display: block;
+  margin: 10px 0;
+}
+
+.lamp-container {
+    position: absolute !important;
+    z-index: 9999 !important;
   }
   
-  #mode-toggle {
-    position: absolute;
-    top: 10px;
-    left: 19px;
-    font-size: 24px;
-    color: white;
-    z-index: 9999;
+#mode-toggle {
+  position: absolute;
+  top: 10px;
+  left: 19px;
+  font-size: 24px;
+  color: white;
+  z-index: 9999;
+}
+
+.header-wrapper {
+  flex-direction: column;
+  align-items: center;
+  padding: 1px;
+  gap: 10px;
+}
+
+.header-text {
+  transform: none !important;
+  text-align: center !important;
+  animation: none;
+  opacity: 1 !important;
+  margin-bottom: 20px;
+  max-width: 300px;
+  font-size: 14px;
+  bottom: -10px;
+  left: 10px;
+}
+
+.phone-only {
+  display: block !important;
+ }
+.desktop-only {
+   display: none !important;
+ }
+
+.header-sticker {
+  right: 50px;
+  bottom: 20px;
+  width: 100px;
+  height: 100px;
   }
 
-  .header-wrapper {
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-
-  .header-text {
-    transform: none !important;
-    text-align: center !important;
-    animation: none;
-    opacity: 1 !important;
-    margin-bottom: 20px;
-  }
-
-  .header-sticker {
-    right: 80px;
-    bottom: 10px;
-    width: 150px;
-    height: 150px;
-  }
-
-  .sticker {
-    transform: none !important;
-    animation: none !important;
+.sticker {
+  transform: none !important;
+  animation: none !important;
   }
 }
