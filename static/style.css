@@ -1,3 +1,4 @@
+
 :root {
   --main-color: #5A6D8C;        /* آبی خاکستری ملایم */
   --accent-color: #F28C8C;      /* صورتی ملایم و گرم */
@@ -495,7 +496,7 @@ display: block;
   display: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
 header {
   padding: 1px 0;
   font-size: 16px;
@@ -515,6 +516,7 @@ section h2{
 }
 
 form {
+  font-size: 5px;
   padding: 15px 20px;
   border-radius: 15px;
   max-width: 320px;
